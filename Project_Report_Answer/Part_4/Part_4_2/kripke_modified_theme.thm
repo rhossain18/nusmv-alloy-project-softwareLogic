@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<alloy>
+
+<view>
+
+<projection> <type name="ctl/TS"/> </projection>
+
+<defaultnode/>
+
+<defaultedge/>
+
+<node>
+   <type name="_0"/>
+   <type name="_1"/>
+   <type name="_busy"/>
+   <type name="_ready"/>
+   <type name="Int"/>
+   <type name="state"/>
+   <type name="String"/>
+   <type name="univ"/>
+   <type name="seq/Int"/>
+   <set name="S0" type="State"/>
+</node>
+
+<node shape="Box" color="Gray">
+   <type name="ctl/TS"/>
+</node>
+
+<node shape="Egg" color="White">
+   <type name="State"/>
+</node>
+
+<node showlabel="no">
+   <set name="$initialStateAxiom_s" type="State"/>
+</node>
+
+<node visible="no">
+   <type name="Bit"/>
+</node>
+
+<edge color="Black" label="">
+   <relation name="transition"> <type name="State"/> <type name="State"/> </relation>
+</edge>
+
+<edge color="Gray" visible="no" layout="yes" attribute="yes">
+   <relation name="sigma"> <type name="ctl/TS"/> <type name="State"/> <type name="State"/> </relation>
+</edge>
+
+<edge color="Red" style="Bold" layout="no" attribute="yes">
+   <relation name="S0"> <type name="ctl/TS"/> <type name="State"/> </relation>
+</edge>
+
+</view>
+
+</alloy>

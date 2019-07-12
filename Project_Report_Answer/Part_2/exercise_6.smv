@@ -1,0 +1,50 @@
+MODULE main
+ VAR
+  state : {s0,s1,s2,s3};
+  p : boolean;
+  q : boolean;
+  r : boolean;
+  t : boolean;
+ ASSIGN
+  init(state) := s0;
+  init(r) := TRUE;
+  init(p) := FALSE;
+  init(q) := FALSE;
+  init(t) := FALSE;
+  next(state):=
+   case
+    state = s0 : {s3,s1,s0};
+	state = s1 : s2;
+	state = s2 : s1;
+	state = s3 : s2;
+   esac;
+  next(p):=
+   case
+    state = s0 | state = s2 : FALSE;
+	state = s1 | state = s3 : TRUE;
+   esac;
+  next(q):=
+   case
+    state = s0 | state = s1 : FALSE;
+	state = s2 | state = s3 : TRUE;
+   esac;
+   next(r):=
+   case
+    state = s3 : FALSE;
+	state = s0 | state = s1 | state = s2 : TRUE;
+   esac;
+   next(t):=
+   case
+    state = s0 | state = s2 | state = s3 : FALSE;
+	state = s1 : TRUE;
+   esac;
+  SPEC
+   !p -> r
+  SPEC
+   !EG r
+  SPEC
+   E[t U q]
+  SPEC
+   EF q
+  SPEC
+   EG r
