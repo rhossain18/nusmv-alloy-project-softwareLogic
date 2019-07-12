@@ -1,0 +1,1 @@
+# nusmv-alloy-project-softwareLogic
